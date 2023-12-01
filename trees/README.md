@@ -51,3 +51,23 @@
 - Unbalanced
   - Almost change to a linked list
   - The operations become O(n)
+
+### Balanced BST
+
+- AVL
+- Black / Red tree
+
+## Heap Tree
+
+- Binary Heap
+  - Every child value is lower then the parent value
+  - (max heap)
+  - is good to do a comparative operations
+  - Left to right insertion
+  - Used in priority queue
+
+### Heap method
+
+- lookup -> O(n)
+- insert -> O(log n)
+- delete -> O(log n)

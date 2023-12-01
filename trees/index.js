@@ -11,7 +11,7 @@ class BinarysearchTree {
     this.root = null;
   }
 
-  treverse(currNode, newNode) {
+  _treverse_add(currNode, newNode) {
     if (newNode.value > currNode.value && currNode.right === null) {
       currNode.right = newNode;
       return this;
@@ -23,9 +23,9 @@ class BinarysearchTree {
     }
 
     if (newNode.value > currNode.value) {
-      this.treverse(currNode.right, newNode);
+      this._treverse_add(currNode.right, newNode);
     } else {
-      this.treverse(currNode.left, newNode);
+      this._treverse_add(currNode.left, newNode);
     }
   }
 
@@ -34,10 +34,28 @@ class BinarysearchTree {
     if (this.root === null) {
       this.root = newNode;
     } else {
-      this.treverse(this.root, newNode);
+      this._treverse_add(this.root, newNode);
     }
   }
-  lookup(value) {}
+
+  _treverse_find(node, value) {
+    if (!node) {
+      return false;
+    }
+    if (node.value === value) {
+      return true;
+    }
+
+    if (value > node.value) {
+      return this._treverse_find(node.right, value);
+    } else {
+      return this._treverse_find(node.left, value);
+    }
+  }
+
+  lookup(value) {
+    return this._treverse_find(this.root, value);
+  }
 }
 
 const tree = new BinarysearchTree();
@@ -51,6 +69,8 @@ tree.insert(15);
 tree.insert(1);
 
 console.log(JSON.stringify(treverse(tree.root)));
+
+console.log(tree.lookup(20));
 
 function treverse(node) {
   const tree = { value: node.value };
